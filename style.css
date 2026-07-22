@@ -40,14 +40,14 @@ body {
   z-index: 1;
 }
 
-/* ANIMATED GLOWING BORDER EFFECT */
+/* ANIMATED GLOWING BORDER EFFECT (FIXED FOR ALL CARD HEIGHTS) */
 .card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
   background: conic-gradient(
     transparent,
     #e8a598,
@@ -63,7 +63,7 @@ body {
   content: '';
   position: absolute;
   inset: 3px;
-  background: #fff5f5; /* Matching Card Inner Background */
+  background: #fff5f5; /* Card Inner Background */
   border-top-right-radius: 47px;
   border-bottom-left-radius: 47px;
   border-top-left-radius: 17px;
