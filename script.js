@@ -45,11 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
   noBtn.addEventListener('mouseover', moveNoButton);
   noBtn.addEventListener('click', moveNoButton);
 
-  // YES CLICK EVENT WITH QUIET EMAIL NOTIFICATION
+  // YES CLICK EVENT WITH GREEN SUBMITTED MESSAGE
   yesBtn.addEventListener('click', () => {
+    // Heading ko Change karein aur Green color dein
+    const heading = successStep.querySelector('h2');
+    if (heading) {
+      heading.innerText = "Response Submitted!";
+      heading.style.color = "#28a745"; // Vibrant Green Color
+    }
+
     switchCard(questionStep, successStep);
 
-    // Aapka Formspree ID set ho gaya hai!
     const formspreeID = "mzdnabdy"; 
 
     fetch(`https://formspree.io/f/${formspreeID}`, {
@@ -60,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       body: JSON.stringify({
         status: 'ACCEPTED! ❤️',
-        message: 'She clicked YES on your love letter website!',
+        message: 'Alohana clicked YES on your love letter website!',
         time: new Date().toLocaleString()
       })
     }).catch(err => console.log(err));
