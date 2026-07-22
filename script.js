@@ -45,16 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
   noBtn.addEventListener('mouseover', moveNoButton);
   noBtn.addEventListener('click', moveNoButton);
 
-  // YES CLICK EVENT WITH DIRECT WHATSAPP OPEN
+  // YES CLICK EVENT WITH QUIET EMAIL NOTIFICATION
   yesBtn.addEventListener('click', () => {
     switchCard(questionStep, successStep);
 
-    // ⚠️ Yahan 923001234567 ko hata kar APNA WhatsApp number likhein!
-    const myPhone = "923087324361"; 
-    const message = encodeURIComponent("I read your letter and... YES! ❤️");
+    // Aapka Formspree ID set ho gaya hai!
+    const formspreeID = "mzdnabdy"; 
 
-    // Click hote hi direct WhatsApp tab kholne ke liye:
-    window.open(`https://wa.me/${myPhone}?text=${message}`, '_blank');
+    fetch(`https://formspree.io/f/${formspreeID}`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        status: 'ACCEPTED! ❤️',
+        message: 'She clicked YES on your love letter website!',
+        time: new Date().toLocaleString()
+      })
+    }).catch(err => console.log(err));
   });
 
   backToStartBtn.addEventListener('click', () => {
