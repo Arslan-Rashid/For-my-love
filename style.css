@@ -44,19 +44,21 @@ body {
 .card::before {
   content: '';
   position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 300%;
-  height: 300%;
+  top: -150%;
+  left: -150%;
+  width: 400%;
+  height: 400%;
   background: conic-gradient(
-    transparent,
-    #e8a598,
-    #7a2b37,
-    #e8a598,
-    transparent 360deg
+    from 0deg,
+    transparent 0%,
+    #e8a598 25%,
+    #7a2b37 50%,
+    #e8a598 75%,
+    transparent 100%
   );
   animation: rotateBorder 6s linear infinite;
   z-index: -2;
+  transform-origin: center center;
 }
 
 .card::after {
