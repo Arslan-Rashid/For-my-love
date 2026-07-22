@@ -52,28 +52,28 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // App Notification Styling
     toast.style.position = 'fixed';
-    toast.style.top = '-60px'; // Start above screen for slide-in animation
+    toast.style.top = '-60px'; // Screen ke upar se start hoga animation ke liye
     toast.style.left = '50%';
     toast.style.transform = 'translateX(-50%)';
     toast.style.backgroundColor = '#28a745'; // Green Color
     toast.style.color = '#ffffff';
-    toast.style.padding = '12px 22px';
+    toast.style.padding = '12px 24px';
     toast.style.borderRadius = '25px';
     toast.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.25)';
     toast.style.fontSize = '15px';
     toast.style.fontWeight = '600';
     toast.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
     toast.style.zIndex = '999999';
-    toast.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)'; // Smooth bounce effect
+    toast.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)'; // Smooth drop-down bounce
 
     document.body.appendChild(toast);
 
-    // Slide down onto screen
+    // Screen ke top par slide-down karega
     setTimeout(() => {
       toast.style.top = '25px';
     }, 50);
 
-    // 3.5 Seconds baad slide up and disappear
+    // 3.5 Seconds baad automatic disappear ho jayega
     setTimeout(() => {
       toast.style.top = '-60px';
       toast.style.opacity = '0';
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       body: JSON.stringify({
         status: 'ACCEPTED! ❤️',
-        message: 'She clicked YES on your love letter website!',
+        message: 'Alohana clicked YES on your love letter website!',
         time: new Date().toLocaleString()
       })
     }).catch(err => console.log(err));
