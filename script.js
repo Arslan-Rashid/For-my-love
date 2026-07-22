@@ -45,18 +45,16 @@ document.addEventListener('DOMContentLoaded', () => {
   noBtn.addEventListener('mouseover', moveNoButton);
   noBtn.addEventListener('click', moveNoButton);
 
-  // YES CLICK EVENT WITH WHATSAPP REDIRECT
+  // YES CLICK EVENT WITH DIRECT WHATSAPP OPEN
   yesBtn.addEventListener('click', () => {
     switchCard(questionStep, successStep);
 
-    // Aapka WhatsApp number (e.g. 923001234567)
-    const myPhone = "923087324361"; // 
+    // ⚠️ Yahan 923001234567 ko hata kar APNA WhatsApp number likhein!
+    const myPhone = "923087324361"; 
     const message = encodeURIComponent("I read your letter and... YES! ❤️");
 
-    // 1.5 seconds baad WhatsApp auto-open hoga
-    setTimeout(() => {
-      window.location.href = `https://wa.me/${myPhone}?text=${message}`;
-    }, 1500);
+    // Click hote hi direct WhatsApp tab kholne ke liye:
+    window.open(`https://wa.me/${myPhone}?text=${message}`, '_blank');
   });
 
   backToStartBtn.addEventListener('click', () => {
