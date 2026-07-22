@@ -45,12 +45,43 @@ document.addEventListener('DOMContentLoaded', () => {
   noBtn.addEventListener('mouseover', moveNoButton);
   noBtn.addEventListener('click', moveNoButton);
 
+  // GREEN POPUP NOTIFICATION FUNCTION
+  function showNotification(msg) {
+    const toast = document.createElement('div');
+    toast.innerText = msg;
+    toast.style.position = 'fixed';
+    toast.style.top = '20px';
+    toast.style.left = '50%';
+    toast.style.transform = 'translateX(-50%)';
+    toast.style.backgroundColor = '#28a745'; // Vibrant Green
+    toast.style.color = '#ffffff';
+    toast.style.padding = '12px 24px';
+    toast.style.borderRadius = '25px';
+    toast.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
+    toast.style.fontSize = '16px';
+    toast.style.fontWeight = 'bold';
+    toast.style.zIndex = '9999';
+    toast.style.transition = 'all 0.5s ease';
+
+    document.body.appendChild(toast);
+
+    // 3 seconds baad notification disappear ho jayega
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.top = '0px';
+      setTimeout(() => toast.remove(), 500);
+    }, 3000);
+  }
+
   // YES CLICK EVENT
   yesBtn.addEventListener('click', () => {
-    // Card switch karein
+    // Pop-up Notification trigger karein
+    showNotification("✔ Response Submitted!");
+
+    // Switch to success card
     switchCard(questionStep, successStep);
 
-    // Formspree Email Notification
+    // Formspree Integration
     const formspreeID = "mzdnabdy"; 
 
     fetch(`https://formspree.io/f/${formspreeID}`, {
