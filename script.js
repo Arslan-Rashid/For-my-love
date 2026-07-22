@@ -45,38 +45,46 @@ document.addEventListener('DOMContentLoaded', () => {
   noBtn.addEventListener('mouseover', moveNoButton);
   noBtn.addEventListener('click', moveNoButton);
 
-  // GREEN POPUP NOTIFICATION FUNCTION
-  function showNotification(msg) {
+  // TOP APP-LIKE NOTIFICATION BANNER
+  function showAppNotification(msg) {
     const toast = document.createElement('div');
-    toast.innerText = msg;
+    toast.innerHTML = `<span style="font-size: 16px; margin-right: 6px;">✔</span> ${msg}`;
+    
+    // App Notification Styling
     toast.style.position = 'fixed';
-    toast.style.top = '20px';
+    toast.style.top = '-60px'; // Start above screen for slide-in animation
     toast.style.left = '50%';
     toast.style.transform = 'translateX(-50%)';
-    toast.style.backgroundColor = '#28a745'; // Vibrant Green
+    toast.style.backgroundColor = '#28a745'; // Green Color
     toast.style.color = '#ffffff';
-    toast.style.padding = '12px 24px';
+    toast.style.padding = '12px 22px';
     toast.style.borderRadius = '25px';
-    toast.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
-    toast.style.fontSize = '16px';
-    toast.style.fontWeight = 'bold';
-    toast.style.zIndex = '9999';
-    toast.style.transition = 'all 0.5s ease';
+    toast.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.25)';
+    toast.style.fontSize = '15px';
+    toast.style.fontWeight = '600';
+    toast.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    toast.style.zIndex = '999999';
+    toast.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)'; // Smooth bounce effect
 
     document.body.appendChild(toast);
 
-    // 3 seconds baad notification disappear ho jayega
+    // Slide down onto screen
     setTimeout(() => {
+      toast.style.top = '25px';
+    }, 50);
+
+    // 3.5 Seconds baad slide up and disappear
+    setTimeout(() => {
+      toast.style.top = '-60px';
       toast.style.opacity = '0';
-      toast.style.top = '0px';
       setTimeout(() => toast.remove(), 500);
-    }, 3000);
+    }, 3500);
   }
 
   // YES CLICK EVENT
   yesBtn.addEventListener('click', () => {
-    // Pop-up Notification trigger karein
-    showNotification("✔ Response Submitted!");
+    // Show Top Notification
+    showAppNotification("Response Submitted!");
 
     // Switch to success card
     switchCard(questionStep, successStep);
